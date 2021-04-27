@@ -1,17 +1,20 @@
 :host {
   display: inline-block;
+
   width: 1em;
   height: 1em;
+
   contain: strict;
+
   fill: currentColor;
-  -webkit-box-sizing: content-box !important;
-          box-sizing: content-box !important;
+
+  box-sizing: content-box !important;
 }
 
 .icon-wrapper,
 svg {
   display: block;
+
   height: 100%;
   width: 100%;
 }
-/*# sourceMappingURL=sti-icon.css.map */
