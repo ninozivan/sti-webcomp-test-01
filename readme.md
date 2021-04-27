@@ -73,3 +73,18 @@ The first step for all three of these strategies is to [publish to NPM](https://
 - Run `npm install my-component --save`
 - Add an import to the npm packages `import my-component;`
 - Then you can use the element anywhere in your template, JSX, html etc
+
+<br/>
+<hr>
+<br/>
+
+# ShowingTime Web Component SVG icons
+
+## Common processes
+
+### Optimize SVG
+To optimize SVG files received from the design team, we can use the SVGO package (https://github.com/svg/svgo)
+
+
+
+
