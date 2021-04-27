@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,OAAO,EAAE,YAAY;EAErB,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EAEX,OAAO,EAAE,MAAM;EAEf,IAAI,EAAE,YAAY;EAElB,UAAU,EAAE,sBAAsB;CACnC;;AAED,AAAA,aAAa;AACb,GAAG,CAAC;EACF,OAAO,EAAE,KAAK;EAEd,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "sti-icon.scss"
+    ],
+    "names": [],
+    "file": "sti-icon.css"
+}

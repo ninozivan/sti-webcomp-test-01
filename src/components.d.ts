@@ -20,6 +20,8 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface StiIcon {
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +30,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLStiIconElement extends Components.StiIcon, HTMLStencilElement {
+    }
+    var HTMLStiIconElement: {
+        prototype: HTMLStiIconElement;
+        new (): HTMLStiIconElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "sti-icon": HTMLStiIconElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +56,11 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface StiIcon {
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "sti-icon": StiIcon;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +68,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "sti-icon": LocalJSX.StiIcon & JSXBase.HTMLAttributes<HTMLStiIconElement>;
         }
     }
 }
