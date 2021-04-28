@@ -23,7 +23,7 @@ glob('src/svg-optimized/*.svg')
       let itemNameWithExt = path.basename(item.file);
       // Make sure this folder exists!
       const nameWithoutExtension = path.parse(itemNameWithExt).name;
-      let filename = `src/svg-shapes-as-strings/${nameWithoutExtension}.json`;
+      let filename = `src/assets/${nameWithoutExtension}.json`;
       fs.writeFileSync(filename, JSON.stringify(item.svg), 'utf8');
     });
     process.exit(0);
