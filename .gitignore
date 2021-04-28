@@ -1,6 +1,9 @@
 dist/
 www/
 loader/
+src/svg/
+src/svg-optimized/
+src/svg-shapes-as-strings/
 
 *~
 *.sw[mnpcod]
