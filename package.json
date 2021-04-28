@@ -15,6 +15,7 @@
     "loader/"
   ],
   "scripts": {
+    "read-svg-names": "node src/utils/save-list-of-icon-names.js",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
@@ -22,7 +23,8 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "^2.0.1"
+    "@stencil/core": "^2.0.1",
+    "@types/node": "^14.14.33"
   },
   "license": "MIT"
 }
