@@ -84,6 +84,8 @@ The first step for all three of these strategies is to [publish to NPM](https://
 
 ### Optimize SVG
 To optimize SVG files received from the design team, we can use the SVGO package (https://github.com/svg/svgo)
+<br/>We should run the following command in order to optimize svg icons from one folder into another.
+<br/>`svgo -f ./path/to/folder/with/svg/files -o ./path/to/folder/with/svg/output`
 
 
 
