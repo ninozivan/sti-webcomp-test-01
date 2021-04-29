@@ -21,6 +21,7 @@ export namespace Components {
         "middle": string;
     }
     interface StiIcon {
+        "icon": string;
     }
 }
 declare global {
@@ -57,6 +58,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface StiIcon {
+        "icon"?: string;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;

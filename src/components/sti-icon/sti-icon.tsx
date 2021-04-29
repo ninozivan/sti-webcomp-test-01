@@ -1,4 +1,5 @@
-import { Component, Host, h, State } from '@stencil/core';
+import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { fetchIcon } from '../../utils/utils';
 
 @Component({
   tag: 'sti-icon',
@@ -6,10 +7,65 @@ import { Component, Host, h, State } from '@stencil/core';
   shadow: true,
 })
 export class StiIcon {
-  @State() private svgContent?: string =
-    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="s-ion-icon"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"></path></svg>';
+  @Element() el: HTMLElement;
+  @Prop() icon: string = null;
+
+  @State() private svgContent: string;
+  @State() private visible = false;
+
+  private intersectionObserver: IntersectionObserver;
+
+  connectedCallback(): void {
+    this.waitUntilVisible(() => {
+      this.visible = true;
+      this.loadIconPathData();
+    });
+  }
+
+  disconnectedCallback(): void {
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+      this.intersectionObserver = null;
+    }
+  }
+
+  async componentWillLoad(): Promise<void> {
+    this.loadIconPathData();
+  }
 
   render() {
     return <Host role="img">{this.svgContent ? <div class="icon-wrapper" innerHTML={this.svgContent}></div> : <div class="icon-wrapper"></div>}</Host>;
+  }
+
+  @Watch('icon') private async loadIconPathData(): Promise<void> {
+    const { icon, visible } = this;
+
+    if (!Build.isBrowser || !icon || !visible) {
+      return;
+    }
+
+    this.svgContent = await fetchIcon({ icon });
+  }
+
+  private waitUntilVisible(callback: () => void): void {
+    if (!Build.isBrowser || typeof window === 'undefined' || !(window as any).IntersectionObserver) {
+      callback();
+      return;
+    }
+
+    this.intersectionObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.intersectionObserver.disconnect();
+            this.intersectionObserver = null;
+            callback();
+          }
+        });
+      },
+      { rootMargin: '50px' },
+    );
+
+    this.intersectionObserver.observe(this.el);
   }
 }
