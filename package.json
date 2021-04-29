@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "svg-shapes-to-json": "node src/utils/save-svg-shapes-as-strings.js",
+    "generate-index-page": "node src/utils/generate-index-page.js",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
